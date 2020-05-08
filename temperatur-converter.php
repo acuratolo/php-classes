@@ -5,14 +5,16 @@
         private $number;
         private $unit;
         private $result;
+        private $fixTerm = 32;
+        private $faktor = 1.8;
 
         private function calculate() {
             if (strtoupper($this->unit) === 'F') {
-                $this->result = ($this->number - 32 ) * 5/9;
+                $this->result = ($this->number - $this->fixTerm ) / $this->faktor;
             }
             
             if (strtoupper($this->unit) === 'C') {
-                $this->result = ($this->number * 9/5) + 32;
+                $this->result = ($this->number * $this->faktor) + $this->fixTerm;
             }
 
             if ((strtoupper($this->unit) !== 'C') and (strtoupper($this->unit) !== 'F')) {
